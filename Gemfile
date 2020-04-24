@@ -75,4 +75,11 @@ gem 'erb2haml'
 
 gem 'devise'
 gem 'font-awesome-sass'
+<<<<<<< Updated upstream
 gem 'jquery-rails'
+=======
+
+
+
+
+>>>>>>> Stashed changes
