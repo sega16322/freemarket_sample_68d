@@ -31,4 +31,6 @@ class Item < ApplicationRecord
   validates :price, numericality: {greater_than_or_equal_to: 300}
   validates :price, numericality: {less_than: 10000000}
   belongs_to :category
+
+  has_many :notifications, dependent: :destroy
 end
