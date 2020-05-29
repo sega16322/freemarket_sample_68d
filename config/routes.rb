@@ -33,4 +33,6 @@ Rails.application.routes.draw do
       get 'bought'
     end
   end
+
+  resources :notifications, only: [:index]
 end
