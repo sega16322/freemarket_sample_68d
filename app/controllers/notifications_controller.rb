@@ -1,11 +1,16 @@
 class NotificationsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_category_brand
+
   def index
+    @user = current_user
     #current_userの投稿に紐づいた通知一覧
-      @notifications = current_user.passive_notifications
+      @notifications = @user.passive_notifications
     #@notificationの中でまだ確認していない(indexに一度も遷移していない)通知のみ
       @notifications.where(checked: false).each do |notification|
-          notification.update_attributes(checked: true)
+        notification.update_attributes(checked: true)
       end
+    render template: 'users/show'
   end
 
   def destroy_all
@@ -14,4 +19,10 @@ class NotificationsController < ApplicationController
       redirect_to users_notifications_path
   end
 
+  private
+  
+  def set_category_brand
+    @parents = Category.where(ancestry: nil)
+    @brands = ["シャネル","ナイキ", "ルイヴィトン", "シュプリーム","アディダス"]
+  end
 end
