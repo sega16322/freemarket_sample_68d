@@ -1,0 +1,13 @@
+-# %ul.notice__list__parent 
+-#   - @notifications.each do |notice|
+-#   - if notice.comment_id.present?
+-#     %li.notice__list__child
+-#       = link_to notification_path, class: "notice__list__child-name" 
+-#       -# = header_icon_image_present?(@user.find(params[:id]).image)
+-#       %p= "#{notice.sender_id.nickname}が#{notice.item_id.name}にコメントしました"
+-#   - elseif notice.like_id.present?
+-#     %li.notice__list__child
+-#       = link_to notification_path, class: "notice__list__child-name" 
+-#       -# = header_icon_image_present?(@user.find(params[:id]).image)
+-#       %p= "#{notice.sender_id.nickname}が#{notice.item_id.name}にイイねしました"  
+    
