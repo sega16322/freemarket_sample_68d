@@ -1,16 +1,22 @@
 module NotificationsHelper
   def notification_form(notification)
-    @sender = notification.sender
+    notification.each do|notice|
+    @sender = notice.sender
     @comment = nil
-    your_item = link_to 'あなたの投稿', users_item_path(notification), style:"font-weight: bold;"
-    @sender_comment = notification.comment_id
-    #notification.actionがlikeかcommentか
-    case notification.action
-      when "like" then
-        tag.a(notification.sender.name, href:users_user_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:users_item_path(notification.item_id), style:"font-weight: bold;")+"にいいねしました"
-      when "comment" then
-          @comment = Comment.find_by(id: @sender_comment)&.content
-          tag.a(@sender.name, href:users_user_path(@sender), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:users_item_path(notification.item_id), style:"font-weight: bold;")+"にコメントしました"
+    @item = notice.item
+    # your_item = link_to 'あなたの商品', user_item_path(notice), style:"font-weight: bold;"
+    @sender_comment = notice.comment_id
+    #notice.actionがlikeかcommentか
+    # case notice.action
+    #   when "like" then
+    #     tag.a(@sender.nickname)+"が"+tag.a("#{@item.name}", style:"font-weight: bold;")+"にいいねしました"
+    #   when "comment" then
+    #     #コメントの内容と投稿のタイトルを取得　      
+    #     @comment = Comment.find_by(id: @sender_comment)
+    #     @comment_content =@comment.content
+    #     @item_title =@comment.item.title
+    #     tag.a(@sender.nickname) + 'が' + tag.a("#{@item.name}") + 'にコメントしました'
+    # end
     end
   end
 
