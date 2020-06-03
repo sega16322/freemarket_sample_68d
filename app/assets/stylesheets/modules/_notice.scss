@@ -1,0 +1,47 @@
+
+
+.notification{
+  background-color: $mainWhiteColor;
+  .notification__contents{
+    border-bottom: 1px solid #eee;
+    .notification__contents__message{
+      .notification__contents__message__box{
+        border-bottom: 1px solid #eee;
+        display: block;
+        min-height: 80px;
+        padding: 16px;
+        color: #333;
+        position: relative;
+        .notification__contents__message__box--icon{
+          .notification--icon{
+            float: left;
+            color: $lightgray;
+            background-color: $whitesmoke;
+            font-size: 3em ;
+            margin-right: 20px;
+          }
+        }
+        .notification__contents__message__box--text{
+          .notification--user{
+            color: $mainblueColor;
+            margin-top: 20px;
+          }
+          .notification--item{
+            color: $mainblueColor;
+            margin-top: 20px;
+          }
+        }
+        .notification__contents__message__box--time{
+          color: $gray;
+          .notification--clock{
+          }
+        }
+        .notification--chevron{
+          position: absolute;
+          top: 50%;
+          right: 16px;
+        }
+      }
+    }
+  }
+}

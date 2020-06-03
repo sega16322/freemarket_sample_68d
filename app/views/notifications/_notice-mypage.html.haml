@@ -1,15 +1,33 @@
-.mypage-left
-  .mypage-tabs-contents
-    .mypage-tabs-left-contents
-      .mypage-tabs-left-contents-messages.show
-        .mypage-tabs-left-contents-messages-icon
-          = image_tag "risu.jpg", height:"50px", width: "50px"
-        .mypage-tabs-left-contents-messages-show
-          .new-message 
-            aaa
-          .message-time
-            sss
-        %i.fas.fa-chevron-right.fa-lg
+.notification
+  .notification__contents
+    .notification__contents__message
+      - @notifications.each do |notice|
+        -if notice.comment_id.present?
+          .notification__contents__message__box
+            .notification__contents__message__box--icon
+              = icon('far', 'user', class:"notification--icon") 
+            .notification__contents__message__box--text
+              %span.notification--user= "#{notice.sender.nickname}"
+              が
+              %a.notification--item(href="item_path(notice.item_id")="#{notice.item.name}"
+              にコメントしました
+            .notification__contents__message__box--time
+              = icon('far', 'clock', class:"notification--clock") 
+              = time_ago_in_words(notice.created_at) + "前"
+            = icon('fas', 'chevron-right', class:"notification--chevron")
+        -if notice.like_id.present?
+          .notification__contents__message__box
+            .notification__contents__message__box--icon
+              = icon('far', 'user', class:"notification--icon") 
+            .notification__contents__message__box--text
+              %span.notification--user= "#{notice.sender.nickname}"
+              が
+              %a.notification--item(href="item_path(notice.item_id")="#{notice.item.name}"
+              にイイねしました
+            .notification__contents__message__box--time
+              = icon('far', 'clock', class:"notification--clock") 
+              = time_ago_in_words(notice.created_at) + "前"
+            = icon('fas', 'chevron-right', class:"notification--chevron")
 .tab-content
   = link_to "#", class: "show-message-list" do
     一覧を見る
