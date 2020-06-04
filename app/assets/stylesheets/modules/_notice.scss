@@ -1,4 +1,52 @@
 
+.notice{
+  right: -125px;
+  z-index: 1000;
+  width: 300px;
+  background-color: white;
+  border-top: 1px solid $whitesmoke;
+  top: 40px;
+  position: absolute;
+  text-align: center;
+  color:$lightgray;
+}
+
+.notice__news__box{
+  position: relative;
+  border-bottom: 1px solid #eee;
+  display: block;
+  color: #333;
+  height: 80px;
+  margin:10px 15px 0 0;
+  display: none;
+}
+.notice--icon{
+  float: left;
+  color: $lightgray;
+  background-color: $whitesmoke;
+  font-size: 3em ;
+  margin: 10px 15px 15px 15px;
+}
+.notice__news__box--message {
+  font-size: 15px;
+}
+.notice--item{
+  color: $mainblueColor;
+}
+.notice--user{
+  color: $mainblueColor;
+}
+.notice__news__box--time{
+  color: $gray;
+}
+.notice--chevron{
+
+}
+
+
+
+
+
 
 .notification{
   background-color: $mainWhiteColor;

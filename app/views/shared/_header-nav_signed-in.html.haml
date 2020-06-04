@@ -2,11 +2,11 @@
   = link_to user_likes_path(current_user), class: "user__liked--list header__right--content--menu--list" do
     %i.far.fa-star.header__right--content--icon.fa-lg
     %span お気に入り！一覧
-.header__right--content--menu.news__content--link
+.header__right--content--menu.news__content--link.drop--notice
   = link_to "#", class: "user__news--list header__right--content--menu--list" do
     %i.far.fa-bell.header__right--content--icon.fa-lg
     %span お知らせ
-  .news__content.nothice__list
+  .header__right--content--menu--notice
     = render "notifications/notice"
 .header__right--content--menu.todo__content--link
   = link_to "#", class: "user__todo--list header__right--content--menu--list" do

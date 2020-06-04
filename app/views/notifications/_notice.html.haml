@@ -1,13 +1,32 @@
--# %ul.notice__list__parent 
--#   - @notifications.each do |notice|
--#   - if notice.comment_id.present?
--#     %li.notice__list__child
--#       = link_to notification_path, class: "notice__list__child-name" 
--#       -# = header_icon_image_present?(@user.find(params[:id]).image)
--#       %p= "#{notice.sender_id.nickname}が#{notice.item_id.name}にコメントしました"
--#   - elseif notice.like_id.present?
--#     %li.notice__list__child
--#       = link_to notification_path, class: "notice__list__child-name" 
--#       -# = header_icon_image_present?(@user.find(params[:id]).image)
--#       %p= "#{notice.sender_id.nickname}が#{notice.item_id.name}にイイねしました"  
-    
+%ul.notice
+  - @notifications.each do |notice|
+    -if notice.present?
+      - if notice.comment_id.present?
+        %li.notice__news__box
+          -# = link_to "#", class: "notice__news__box__child--name" 
+          .notice__news__box--icon
+            = icon('far', 'user', class:"notice--icon") 
+          .notice__news__box--message 
+            %span.notice--user= "#{notice.sender.nickname}"
+            が
+            %a.notice--item(href="item_path(notice.item_id")="#{notice.item.name}"
+            にコメントしました
+          .notice__news__box--time 
+            = icon('far', 'clock', class:"top-item__icon__btn") 
+            = time_ago_in_words(notice.created_at) + "前"
+      - if notice.like_id.present?
+        %li.notice__news__box
+          -# = link_to "#", class: "notice__news__box__child--name" 
+          .notice__news__box--icon
+            = icon('far', 'user', class:"notice--icon") 
+          .notice__news__box--message 
+            %span.notice--user= "#{notice.sender.nickname}"
+            が
+            %a.notice--item(href="item_path(notice.item_id")="#{notice.item.name}"
+            にいいね！しました
+          .notice__news__box--time 
+            = icon('far', 'clock', class:"top-item__icon__btn") 
+            = time_ago_in_words(notice.created_at) + "前"
+    -else 
+      %i.far.fa-file-alt.fa-4x
+        %p お知らせはありません
