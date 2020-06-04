@@ -1,26 +1,26 @@
-.categories
-  %ul
-    %li
-      = link_to categories_path, class: "category__search search__btn" do
-        = image_tag "icon_category.png", height: "15px", width: "15px", class: "icon__category"
-        カテゴリーから探す
-      %ul.category__parent.category__list
-        - @parents.each do |parent|  
-          - if parent.name.include?("カテゴリー一覧")
-            %li
-              = link_to categories_path, class: "category__parent--name" do
-                = parent.name
-          - else
-            %li
-              = link_to category_path(id: parent), class: "category__parent--name" do
-                = parent.name
-              %ul.category__child.category__list
-                - parent.children.each do |child|
-                  %li
-                    = link_to category_path(id: child), class: "category__child--name" do
-                      = child.name
-                    %ul.category__grandchild.category__list
-                      - child.children.each do |grandchild|
-                        %li
-                          = link_to category_path(id: grandchild), class: " category__grandchild--name" do
-                            = grandchild.name
+-# .categories
+-#   %ul
+-#     %li
+-#       = link_to categories_path, class: "category__search search__btn" do
+-#         = image_tag "icon_category.png", height: "15px", width: "15px", class: "icon__category"
+-#         カテゴリーから探す
+-#       %ul.category__parent.category__list
+-#         - @parents.each do |parent|  
+-#           - if parent.name.include?("カテゴリー一覧")
+-#             %li
+-#               = link_to categories_path, class: "category__parent--name" do
+-#                 = parent.name
+-#           - else
+-#             %li
+-#               = link_to category_path(id: parent), class: "category__parent--name" do
+-#                 = parent.name
+-#               %ul.category__child.category__list
+-#                 - parent.children.each do |child|
+-#                   %li
+-#                     = link_to category_path(id: child), class: "category__child--name" do
+-#                       = child.name
+-#                     %ul.category__grandchild.category__list
+-#                       - child.children.each do |grandchild|
+-#                         %li
+-#                           = link_to category_path(id: grandchild), class: " category__grandchild--name" do
+-#                             = grandchild.name

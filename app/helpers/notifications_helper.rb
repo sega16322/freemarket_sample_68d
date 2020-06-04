@@ -11,7 +11,7 @@ module NotificationsHelper
     #   when "like" then
     #     tag.a(@sender.nickname)+"が"+tag.a("#{@item.name}", style:"font-weight: bold;")+"にいいねしました"
     #   when "comment" then
-    #     #コメントの内容と投稿のタイトルを取得　      
+    #     #コメントの内容と投稿のタイトルを取得   
     #     @comment = Comment.find_by(id: @sender_comment)
     #     @comment_content =@comment.content
     #     @item_title =@comment.item.title
