@@ -1,0 +1,25 @@
+- if messages.present?
+  - messages.each do |message|
+    - if message.from == current_user
+      %div{id: "message_#{message.id}", class: "message__current__user message", data: {message: {id: message.id}}}
+        = safe_join(message.message.split("\n"),tag(:br))
+        %p
+          %i.far.fa-clock
+          = "#{time_ago_in_words(message.created_at)}前"
+        = link_to item_message_path(item, message), method: :delete, remote: true, class: "message__delete__btn" do
+          %i.far.fa-trash-alt
+        = tab_icon_image_present?(current_user.account)
+    - else
+      - other_user = User.find(message.to_id)
+      %div{id: "message_#{message.id}", class: "message__other__user message"}
+        = safe_join(message.message.split("\n"),tag(:br))
+        %p
+          %i.far.fa-clock
+          = "#{time_ago_in_words(message.created_at)}前"
+        = tab_icon_image_present?(other_user.account)
+- else
+  .not__message
+    %p
+      取引メッセージはありません
+    .not__message__icon
+      %i.fas.fa-comment-slash.fa-5x

@@ -1,11 +1,17 @@
-.content
-  %span 商品名
-  = item.name
-  %span 価格
-  = "#{item.price.to_s(:delimited)}円"
-  - category = Category.find(item.category_id)
-  = category.name
-  - item.images.each do |image|
-    = image_tag image.image.url
-  = link_to '編集', edit_item_path(item)
-
+.item-list.hover
+  = link_to item_path(item),class: "item" do
+    = image_tag "#{item.images[0].image.url}", class: 'item-img'
+    -if item.buyer_id.present? 
+      .items-box_photo__sold
+        .items-box_photo__sold__inner
+          SOLD
+    .item-list__body
+      %h3.name 
+        = item.name
+      .details
+        %ul
+          %li 
+            = item.price.to_s(:delimited)
+          %li#like
+            = item.likes.count
+        %p.detail (税込)

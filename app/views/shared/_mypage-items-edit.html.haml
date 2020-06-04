@@ -8,7 +8,7 @@
             SOLD
     .user__liked__item__details
       .user__liked__item__name
-        = item.name
+        = item.name.truncate(30, omission: '...')
       .user__liked__item__price
         %span
           ¥

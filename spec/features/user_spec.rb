@@ -51,6 +51,7 @@ feature 'user', type: :feature do
     end
 
     scenario 'ログアウトができること' do
+      visit user_path(user)
       click_on "ログアウト"
       expect(page).to have_content "新規会員登録"
     end

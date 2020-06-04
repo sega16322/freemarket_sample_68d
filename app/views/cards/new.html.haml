@@ -1,9 +1,10 @@
-.wrapper
-  = render "shared/header"
 
-  .card-container
-    .card-wrapper
-      %h2.card-wrapper__title
+.wrapper 
+  = render "shared/header"
+  .show-contents
+    = render "shared/show-contents"
+    .content
+      .likes__title
         クレジットカード登録
       = form_with url: cards_path, method: :post, id: "payjp__form" do |f|
         .form__upper
@@ -18,12 +19,13 @@
             = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]], {}, name: "exp_year", id:"exp_year"
             %span 年
             = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{}, name: "exp_month", id:"exp_month"
-            %span 月
+            %span{id: "error_zone"} 月
           .form__upper__group
             = f.label :セキュリティーコード
             %span.form-require 必須
             = f.text_field :cvc, name: "cvc", id:"cvc", class: 'input-default',placeholder: '3~4文字、半角数字のみ', maxlength: "4"
           .form__upper__group
-            = f.submit '次へ進む', class: 'btn-default',id: "charge-form"
-
-  = render "shared/form-footer"
+            = f.submit '登録する', class: 'btn-default',id: "charge-form"
+  = render "shared/footer-image"
+  = render "shared/footer"
+  = render "shared/saler-btn"

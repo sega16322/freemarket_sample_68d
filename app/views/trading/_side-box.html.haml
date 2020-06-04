@@ -1,0 +1,81 @@
+.trading
+  .trading__information
+    .trading__information__title
+      取引情報
+  .trading__information__box
+    .item__information
+      .item__information__title
+        商品
+      .item__information__box
+        = image_tag @item.images[0].image.url, height:"70px", width: "70px", class: "item__image"
+        .item__name
+          = @item.name.truncate(15, omission: '...')
+        .saler__user
+          = @saler_user.nickname.truncate(15, omission: '...')
+    .item__information
+      .item__information__title
+        発送日数
+      .item__information__box
+        = @item.delivery_date.name
+    - if @saler_user == current_user
+      .item__information
+        .item__information__title
+          送料
+        .item__information__box
+          = @item.delivery_charge_flag = 1 ? "送料込み(出品者負担)" : "着払い(購入者負担)"
+      .item__information
+        .item__information__title
+          販売利益
+        .item__information__box
+          = "#{@sales_profit.to_s(:delimited)}円"
+          .nav__sales__profit
+            ❇︎上記より配送料が引かれます
+      .item__information
+        
+        .item__information__title
+          販売手数料
+        .item__information__box
+          = "#{@sales_commission.to_s(:delimited)}円"
+    - else
+      .item__information
+        .item__information__title
+          発送元
+        .item__information__box
+          = @item.prefecture.name
+      .item__information
+        .item__information__title
+          お支払い金額
+        .item__information__box
+          = "#{@item.price.to_s(:delimited)}円"
+  - if @saler_user == current_user
+    .trading__information
+      .trading__information__title
+        購入者情報
+      .trading__information__box
+        .item__information
+          .item__information__title
+            購入者ニックネーム
+          .item__information__box
+            = @buyer_user.nickname.truncate(15, omission: '...')
+      .trading__information__box
+        .item__information
+          .item__information__title
+            取引評価数
+          .item__information__box
+            今後実装する？？
+  - else
+    .trading__information
+      .trading__information__title
+        出品者情報
+      .trading__information__box
+        .item__information
+          .item__information__title
+            出品者ニックネーム
+          .item__information__box
+            = @saler_user.nickname.truncate(15, omission: '...')
+      .trading__information__box
+        .item__information
+          .item__information__title
+            取引評価数
+          .item__information__box
+            今後実装する？？

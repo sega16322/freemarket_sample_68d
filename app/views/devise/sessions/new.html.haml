@@ -30,6 +30,6 @@
         .field
           = f.submit "ログイン", class: "login__next__btn"
         .field.field__forgot__password__block
-          = link_to "#", class: "field__password--forgot" do
+          = link_to new_user_password_path, class: "field__password--forgot" do
             パスワードをお忘れの方
   = render "shared/form-footer"

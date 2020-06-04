@@ -1,0 +1,6 @@
+- unless item.trading_status_id == 5
+  = form_with model: [item, message], remote: true do |f|
+    .field
+      = f.text_area :message, placeholder: "取引に関する連絡を取ろう！", required: true, rows: 7
+    .field
+      = f.submit "取引メッセージを送信する", id: "message-send-btn", data: { disable_with: "送信中..." }

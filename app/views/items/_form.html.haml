@@ -90,13 +90,10 @@
       .item-btn-area__container
         .item-btn-area__container__box
           = f.hidden_field :trading_status_id, value: 1
-          = f.submit '出品する', id: 'item-post-btn', class: 'item-btn', trade_status_id: '1'
+          = f.submit '出品する', id: 'item-post-btn', class: 'item-btn item-form-btn', trade_status_id: '1'
       .item-btn-area__container
         .item-btn-area__container__box
-          -# = f.hidden_field :trading_status_id, value: 4
-          = f.submit '下書きに保存する', id: 'item-draft-btn', class: 'item-btn', trade_status_id: '4'
-          -# = link_to items_path(trade_status_id: 4), method: :post, id: 'item-draft-btn', class: 'item-btn' do
-          -#   %span 下書きに保存
+          = f.submit '下書きに保存する', id: 'item-draft-btn', class: 'item-btn item-form-btn', trade_status_id: '4'
       .item-btn-area__container
         .item-btn-area__container__box
           = link_to 'もどる', root_path

@@ -1,5 +1,5 @@
 // エラーが出た際フォームの入力フォントサイズが変わってしまうのでフォーム要素のidにfont-sizeを指定。
-#user_nickname, #user_email, #user_password, #user_password_confirmation, #user_last_name, #user_first_name, #user_last_name_kana, #user_first_name_kana{
+#user_nickname, #user_email, #user_password, #user_password_confirmation, #user_last_name, #user_first_name, #user_last_name_kana, #user_first_name_kana, #user_current_password{
   font-size: 15px;
   color: black;
   height: 40px;
@@ -72,6 +72,9 @@ input:focus{
 
 // 以下二つはインプット要素にサイズの異なる物があるため別々にサイズを定義。一致しているカラーなどはページ上部の複数のidにまとめて定義してある（ニックネーム入力欄と氏名入力欄ではサイズが異なるため。）
 .field__form input{
+  width: 306px;
+}
+.field__form select{
   width: 306px;
 }
 .field__form--name input{
@@ -155,8 +158,10 @@ select {
   font-size: 15px;
   height: 50px;
   width:72px;
-  background-color:white;
+  padding: 0 8px;
   border: 1px solid $lightgray;
+  border-radius: 5px;
+  background-color:white;
 }
 select:focus{
   border: 1px solid $skyblue;
@@ -193,4 +198,9 @@ textarea {
   border: solid 1px $lightgray;
   border-radius:  5px;
   font-size: 16px;
+}
+
+textarea:focus{
+  border: 1px solid $skyblue;
+  outline: 0;
 }

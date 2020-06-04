@@ -212,6 +212,10 @@
     padding: 40px 0;
     background-color: #f8f8f8;
     height: 100%;
+    .category__items--title{
+      font-weight: bold;
+      font-size: 20px;
+    }
     .pickup-title {
       text-align: center;
       font-size: 28px;
@@ -404,6 +408,7 @@
     }
   }
 }
+
 .todo__content{
   right: 14%;
   display: none;

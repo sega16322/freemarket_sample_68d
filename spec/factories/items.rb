@@ -10,7 +10,7 @@ FactoryBot.define do
     prefecture_id        {Faker::Number.between(from: 1, to: 47)}
     status_id            {Faker::Number.between(from: 1, to: 6)}
     delivery_date_id     {Faker::Number.between(from: 1, to: 3)}
-    # delivery_method_id {Faker::Number.between(from: 1, to: 2)}
+    delivery_method_id {Faker::Number.between(from: 1, to: 2)}
     trading_status_id    {1}
     created_at           { Faker::Time.between(from: DateTime.now - 10, to: DateTime.now) }
     after(:build) do |item|
@@ -32,7 +32,7 @@ FactoryBot.define do
     prefecture_id        {Faker::Number.between(from: 1, to: 47)}
     status_id            {Faker::Number.between(from: 1, to: 6)}
     delivery_date_id     {Faker::Number.between(from: 1, to: 3)}
-    # delivery_method_id {Faker::Number.between(from: 1, to: 2)}
+    delivery_method_id {Faker::Number.between(from: 1, to: 2)}
     trading_status_id    {1}
     created_at           { Faker::Time.between(from: DateTime.now - 10, to: DateTime.now) }
     after(:build) do |item|
@@ -57,7 +57,7 @@ FactoryBot.define do
     prefecture_id        {Faker::Number.between(from: 1, to: 47)}
     status_id            {Faker::Number.between(from: 1, to: 6)}
     delivery_date_id     {Faker::Number.between(from: 1, to: 3)}
-    # delivery_method_id {Faker::Number.between(from: 1, to: 2)}
+    delivery_method_id {Faker::Number.between(from: 1, to: 2)}
     trading_status_id    {1}
     after(:build) do |item|
       parent_category    = create(:category)
@@ -78,7 +78,7 @@ FactoryBot.define do
     prefecture_id        {Faker::Number.between(from: 1, to: 47)}
     status_id            {Faker::Number.between(from: 1, to: 6)}
     delivery_date_id     {Faker::Number.between(from: 1, to: 3)}
-    # delivery_method_id {Faker::Number.between(from: 1, to: 2)}
+    delivery_method_id   {Faker::Number.between(from: 1, to: 2)}
     trading_status_id    {1}
     after(:build) do |item|
       item.images<< build(:image, item: item)

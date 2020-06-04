@@ -3,6 +3,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :set_category_brand, only: [:edit, :update]
+  before_action :set_item_search_query, expect: [:new, :create, :create_address]
 
   def new
     @user = User.new
@@ -38,15 +40,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
-  # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
 
   # DELETE /resource
   # def destroy
@@ -67,6 +67,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday])
+  end
+
+  def set_category_brand
+    @parents = Category.where(ancestry: nil)
+    @brands = ["シャネル","ナイキ", "ルイヴィトン", "シュプリーム","アディダス"]
   end
 
   # If you have extra params to permit, append them to the sanitizer.

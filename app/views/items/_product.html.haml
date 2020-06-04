@@ -21,7 +21,7 @@
                       SOLD
               .item-list__body
                 %h3.name 
-                  = item.name
+                  = item.name.truncate(15, omission: '...')
                 .details
                   %ul
                     %li 

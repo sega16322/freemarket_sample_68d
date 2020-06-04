@@ -1,10 +1,21 @@
-%h2 Forgot your password?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .actions
-    = f.submit "Send me reset password instructions"
-= render "devise/shared/links"
+
+.register-wrapper.max__height__wrapper
+  = render 'shared/form-header'
+  .member-form
+    .member-form__title
+      %h2.member-form__title-text パスワードをお忘れの方
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post },builder:FormHelper::FormWithErrorMessageBuilder) do |f|
+      #forgot__password__user
+        .field
+          .field__label
+            = f.label :email
+          .field__form
+            = f.email_field :email, autocomplete: "email", placeholder: "ご登録されたメールアドレス"
+        .field.field__forgot__password
+          .field__recaptha
+            = flash[:recaptcha_error]
+            = recaptcha_tags
+        .actions
+          = f.submit "送信する", class: "send__btn"
+  = render "shared/form-footer"
+

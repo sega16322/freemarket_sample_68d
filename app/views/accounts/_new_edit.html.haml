@@ -1,0 +1,11 @@
+.wrapper 
+  = render "shared/header"
+  .show-contents
+    = render "shared/show-contents"
+    .content
+      .likes__title
+        = "#{current_user.nickname.truncate(10, omission: '...')}さんのプロフィール"
+      = render "form"
+  = render "shared/footer-image"
+  = render "shared/footer"
+  = render "shared/saler-btn"

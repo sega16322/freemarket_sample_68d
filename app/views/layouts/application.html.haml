@@ -4,6 +4,13 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
     %title FreemarketSample68d
     %script{src: "https://js.pay.jp/", type: "text/javascript"}
+    %meta{:content => "summary_large_image", :name => "twitter:card"}/
+    %meta{:content => "@yGZqMc5IqNbVsw0", :name => "twitter:site"}/
+    %meta{:content => "http://52.198.247.0/", :property => "og:url"}/
+    %meta{:content => "freemarket_sample", :property => "og:title"}/
+    %meta{:content => "チーム開発用のサンプルです！是非ご覧になってください！", :property => "og:description"}/
+    %meta{:content => "logo-white.png", :property => "og:image"}/
+    = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'

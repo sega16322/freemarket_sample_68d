@@ -1,0 +1,16 @@
+.sell-notification{
+  padding: 48px;
+  text-align: center;
+  &__title {
+    margin-bottom: 24px;
+  }
+  &__link {
+    &:hover {
+      text-decoration: underline;
+      color: $skyblue;
+    }
+  }
+  .item-btn-link {
+    padding: 12px 0;
+  }
+}

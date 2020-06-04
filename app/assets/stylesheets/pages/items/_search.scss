@@ -1,0 +1,86 @@
+.search-wrapper {
+  display: flex;
+  padding: 48px 10%;
+  background-color: $whitesmoke;
+  .search-content {
+    display: flex;
+    margin: 0 auto;
+    .sc-side {
+      width: 320px;
+    }
+    .sc-content {
+      width: 820px;
+      &__result-title {
+        font-size: 1.2rem;
+      }
+      .item-lists {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        .item-list {
+          max-width: (1 / 5);
+          background-color: #fff;
+          box-shadow: 0 3px 5px rgba(0,0,0,0.22); 
+          margin-bottom: 15px;    
+          position: relative;   
+          .item-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            }
+          .items-box_photo__sold{
+            width: 0;
+            height: 0;
+            border-top: 60px solid #ea352d ;
+            border-right: 60px solid transparent;
+            border-bottom: 60px solid transparent;
+            border-left: 60px solid #ea352d ;
+            position: absolute;
+            top: 0px;
+            &__inner{
+              transform: rotate(-45deg);
+              font-size: 23px;
+              margin:-35px 0px 0px -57px;
+              color: #fff;
+              letter-spacing: 2px;
+              font-weight: 600;
+            }
+          }
+          ul {
+            list-style-type: none;
+          }
+            .item-list__body {
+              max-width: 180px;
+              background-color: #fff;
+              color: #333;
+              padding: 16px;
+              .name {
+                overflow: hidden;
+                line-height: 1.5;
+                font-size: 14px;
+                text-align: left;
+              }
+              .details ul {
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                #like::before {
+                  content: "★";
+                }
+              }
+                .detail {
+                  font-size: 10px;
+                  text-align: left;
+                }  
+            }
+        }
+        .hover:hover {
+          opacity: 0.6;
+          outline: 2px solid $mainblueColor;
+        }
+      }
+    }
+  }
+}

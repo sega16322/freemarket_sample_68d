@@ -9,6 +9,5 @@ FactoryBot.define do
     last_name_kana        { ForgeryJa(:name).last_name(to: ForgeryJa::KANA) }
     first_name_kana       { ForgeryJa(:name).first_name(to: ForgeryJa::KANA) }
     birthday              { Faker::Date.birthday }
-    icon_image            { "test.jpg" }
   end
 end

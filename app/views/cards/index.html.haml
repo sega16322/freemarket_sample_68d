@@ -1,24 +1,27 @@
-.wrapper
+.wrapper 
   = render "shared/header"
-
-  .card-container
-    .card-wrapper
-      %h2.card-wrapper__title
+  .show-contents
+    = render "shared/show-contents"
+    .content
+      .likes__title
         クレジットカード照会
-      - if @card.present?
-        = image_tag "visa-card.png"
-        %h3 カード番号  
-        %p.creditcard-info__number
-          = "**** **** **** " + @card_info.last4
-        %h3 有効期限 月 / 年
-        %p.creditcard-info__period 
-          = @exp_month + " / " + @exp_year
-        .creditcard-info__period 
-          = button_to "削除する", card_path(@card), method: :delete, class: "btn-card", data: { confirm: "本当に削除しますか？" }
-          = button_to "トップページへ", root_path, method: :get, class: "btn-card"
-      - else
-        .creditcard-info__period
-          %i.far.fa-credit-card 
-          = button_to "クレジットカードを追加する", new_card_path, method: :get, class: "btn-card"
-
-  = render "shared/form-footer"
+      .card-container
+        .card-wrapper
+          - if @card.present?
+            = image_tag "visa-card.png"
+            %h3 カード番号  
+            %p.creditcard-info__number
+              = "**** **** **** " + @card_info.last4
+            %h3 有効期限 月 / 年
+            %p.creditcard-info__period 
+              = @exp_month + " / " + @exp_year
+            .creditcard-info__period 
+              = button_to "削除する", card_path(@card), method: :delete, class: "btn-card", data: { confirm: 'カードを削除してよろしいですか?',cancel: 'やめる',commit: '削除する'}, title: '削除確認'
+              = button_to "トップページへ", root_path, method: :get, class: "btn-card"
+          - else
+            .creditcard-info__period
+              %i.far.fa-credit-card 
+              = button_to "クレジットカードを追加する", new_card_path, method: :get, class: "btn-card"
+  = render "shared/footer-image"
+  = render "shared/footer"
+  = render "shared/saler-btn"

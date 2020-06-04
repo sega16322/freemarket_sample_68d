@@ -1,0 +1,28 @@
+.content{
+  &__edit__user{
+    background-color: white;
+    width: 100%;
+    padding: 30px 0;
+    #edit_user{
+      background-color: white;
+      margin: 0 auto;
+      width: 306px;
+      .edit__pw__checkbox{
+        padding-left: 5px;
+      }
+      .actions{
+        padding-top: 40px;
+        .change__btn{
+          display: inline-block;
+          background-color: $skyblue;
+          width: 306px;
+          opacity: 0.8;
+          padding: 15px 0;
+          color: white;
+          transition: 1s;
+          @include hover(white, 0.6)
+        }
+      }
+    }
+  }
+}

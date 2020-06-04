@@ -34,14 +34,14 @@
   width: 100%;
   color: black;
   display: block;
-  padding: 3px 15px;
+  padding: 5px 15px;
   font-size: 11px;
   letter-spacing: 2px;
   z-index: 1000;
 }
 
 .categories{
-  padding-bottom: 10px;
+  padding-bottom: 2px;
   &:hover{
     .category__parent{
       top: 122px;
@@ -51,7 +51,7 @@
         width: 100%;
         color: black;
         display: block;
-        padding: 10px 20px;
+        padding: 11px 20px;
         font-size: 13px;
         letter-spacing: 2px;
       }
@@ -97,6 +97,7 @@
   h5{
     display: inline;
     letter-spacing: 2px;
+    font-weight: bold;
   }
 }
 
@@ -109,10 +110,11 @@
     width: 700px;
     margin: 0 auto;
     padding-bottom: 20px;
-    h3{
+    &__title{
       font-size: 20px;
       letter-spacing: 1px;
       padding: 40px 0 15px;
+      font-weight: bold;
     }
     .box__parent--link{
       font-size: 15px;

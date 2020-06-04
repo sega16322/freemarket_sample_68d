@@ -1,28 +1,25 @@
 .wrapper
   = render "shared/header"
-
   .main
     .main-item
       .main-item__content
         .main-item__content--form
           .itembox
             %h2.itembox__name
-              = @item.name
+              = @item.name.truncate(30, omission: '...')
               .itembox__image
               .mini-image
-                - @item.images.each do |image|
-                  .mini-images
-                    =image_tag image.image.url
+                .mini-images
+                  =image_tag @item.images[0].image.url
             .itembox__price
               %span
                 ¥
-                = @item.price
+                = @item.price.to_s(:delimited)
               .itembox__price--detail
                 %span
                   (税込)
                 %span
                   送料込み
-
   .card-container
     .card-wrapper
       %h2.card-wrapper__title
@@ -35,7 +32,6 @@
         %p.creditcard-info__period 
           = @exp_month + " / " + @exp_year
         .creditcard-info__period
-          = button_to "このカードで買う", buy_card_path(@item.id), method: :get, class: "btn-card"
+          = button_to "このカードで買う", buy_card_path(@item.id),method: :get ,class: "btn-card", data: { confirm: 'この商品を購入してよろしいですか?',cancel: 'やめる',commit: '購入する'}, title: '購入確認'
           = button_to "トップページへ", root_path, method: :get, class: "btn-card"
-
   = render "shared/form-footer"

@@ -1,0 +1,17 @@
+- @items.each do |item|
+  = link_to item_trading_path(item, current_user), class: "user__liked__items" do
+    .user__liked__items__image
+      = image_tag "#{item.images[0].image.url}", height:"50px", width: "50px", class: "user__liked__item__image"
+      -if item.buyer_id.present? 
+        .items__image__sold
+          .items__image__sold__inner
+            SOLD
+    .user__liked__item__details
+      .user__liked__item__name
+        = item.name.truncate(30, omission: '...')
+      .user__liked__item__price
+        %span
+          ¥
+        = item.price.to_s(:delimited)
+    %i.fas.fa-chevron-right
+= paginate @items

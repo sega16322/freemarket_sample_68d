@@ -4,6 +4,9 @@
   padding-bottom: 20px;
   .account__field{
     position: relative;
+    label{
+      width: 100%;
+    }
     .account__image__form__background{
       cursor: pointer;
     }

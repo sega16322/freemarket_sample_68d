@@ -1,0 +1,10 @@
+= link_to  "#", class: "proceeds__link " do
+  %span 売上金
+  .proceeds__link__price
+    = sales_price_present?(current_user.sales_price)
+  %i.fas.fa-chevron-right
+= link_to "#", class: "proceeds__link" do
+  %span フリマポイント
+  .proceeds__link__price
+    = point_present?(current_user.point)
+  %i.fas.fa-chevron-right

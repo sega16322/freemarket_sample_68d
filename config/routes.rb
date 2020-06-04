@@ -12,8 +12,17 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :tops, only: [:new]
   resources :accounts, except: [:show, :index]
-  resources :users, only: [:show] do
+  resources :addresses, only: [:edit, :update, :show]
+  resources :users, only: [:show, :index] do
     resources :likes, only: [:index]
+    collection do
+      get 'draft'
+      get 'exhibition'
+      get 'exhibition_trading'
+      get 'exhibition_completed'
+      get 'bought'
+      get 'bought_completed'
+    end
   end
   resources :categories, only: [:index, :show] 
   resources :cards, except: [:show,:edit,:update] do
@@ -22,16 +31,16 @@ Rails.application.routes.draw do
       get 'buy'
     end
   end
+  
   resources :items do
     resources :likes, only: [:create, :destroy]
     collection do
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
-      get 'draft'
-      get 'exhibition'
-      get 'exhibition_trading'
-      get 'bought'
+      get 'search'
     end
+    resources :trading, only: [:show, :update]
+    resources :messages, only: [:create, :destroy]
   end
 
   resources :notifications, only: [:index]

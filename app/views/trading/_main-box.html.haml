@@ -1,0 +1,10 @@
+.content
+  .likes__title
+    取引画面
+  .content__trading{id: "trading__box"}
+    = render partial: 'trading_status', locals: { item: @item , saler_user: @saler_user, buyer_user: @buyer_user}
+  .dm__box
+    #trading__messages
+      = render partial: 'messages/index', locals: { messages: @messages , item: @item}
+    .trading__message__form{id: "message__form"}
+      = render partial: 'form', locals: { item: @item , message: @message}

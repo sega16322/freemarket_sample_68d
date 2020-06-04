@@ -38,4 +38,13 @@ module UsersHelper
       image_tag "user-background.jpg", class: "content_image" 
     end
   end
+
+  def fullname(user)
+    user.last_name + "　" + user.first_name 
+  end
+
+  def fullname_kana(user)
+    user.last_name_kana + "　" + user.first_name_kana
+  end
+
 end

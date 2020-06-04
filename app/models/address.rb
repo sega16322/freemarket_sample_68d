@@ -1,7 +1,6 @@
 class Address < ApplicationRecord
   belongs_to :user, optional: true
-
-
+  
   with_options presence: true do
     validates :last_name
     validates :first_name

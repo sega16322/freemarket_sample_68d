@@ -1,0 +1,22 @@
+.content{
+  &__user__information{
+    background-color: white;
+    width: 100%;
+    padding: 10px 0 30px;
+    &__field{
+      width: 100%;
+      margin-top: 20px;
+      text-align: center;
+      &__title{
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 5px;
+        letter-spacing: 2px;
+      }
+      &__body{
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}

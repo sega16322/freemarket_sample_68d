@@ -1,12 +1,12 @@
 class LikesController < ApplicationController
+  before_action :set_item_search_query
   before_action :set_item, except: [:index]
+  before_action :set_category_brand,  only: [:index]
   before_action :move_show_item, except: [:index]
 
   def index
-    @parents = Category.where(ancestry: nil)
-    @brands = ["シャネル","ナイキ", "ルイヴィトン", "シュプリーム","アディダス"]
     items = []
-    likes = Like.where(user_id: params[:user_id])
+    likes = Like.users(params[:user_id])
     if likes.present?
       likes.each { |like| items << Item.find(like.item_id)}
     end

@@ -4,12 +4,11 @@
       .header__block__inner__icon
         = link_to root_path do
           = image_tag "logo.png", class:"furima-logo", width: "140px", height: "40px"
-      .header__block__inner__form
+      = search_form_for(@q, url: search_items_path, class: 'header__block__inner__form') do |f|
         .header__block__inner__form__box
-          = text_field_tag :content, "", class: "header__block__inner__form__box__input", placeholder:"キーワードから探す"
-          .header__block__inner__form__box__btn
-            = link_to '#' do
-              = image_tag "icon-search 1.png", class: "header__block__inner__form__box__btn__pic"
+          = f.text_field :name_or_explanation_cont, class: "header__block__inner__form__box__input", placeholder:"キーワードから探す"
+          = button_tag type: 'submit', class: "header__block__inner__form__box__btn" do
+            %i.fas.fa-search
   .header__bottom
     .header__left--content
       = render "shared/category"                       

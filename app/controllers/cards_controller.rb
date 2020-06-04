@@ -1,20 +1,13 @@
 class CardsController < ApplicationController
   require "payjp"
+  before_action :set_item_search_query
   before_action :set_category_brand
   before_action :set_card
   before_action :set_payjp_api, except: [:new]
   before_action :set_item, only: [:buy, :check]
   
   def index
-    if @card.present?
-      customer    = Payjp::Customer.retrieve(@card.payjp_id)
-      @card_info  = customer.cards.retrieve(customer.default_card)
-      @card_brand = @card_info.brand
-      @exp_month  = @card_info.exp_month.to_s
-      @exp_year   = @card_info.exp_year.to_s.slice(2,3) 
-    else
-      render :new
-    end
+    check_card
   end
 
   def new
@@ -28,7 +21,7 @@ class CardsController < ApplicationController
     @card.save! ? (redirect_to cards_path) : (render :new)
   end
 
-  def destroy     
+  def destroy    
     customer = Payjp::Customer.retrieve(@card.payjp_id)
     customer.delete 
     redirect_to cards_path if @card.destroy
@@ -47,11 +40,29 @@ class CardsController < ApplicationController
         customer: @card.payjp_id,
         currency: 'jpy'
       )
-      @item.update(buyer_id: current_user.id) ? (redirect_to item_path(@item)) : (redirect_to root_path)
+      @item.update(buyer_id: current_user.id) ? (redirect_to item_trading_path(@item, current_user)) : (redirect_to root_path)
     end
   end
 
   def check
+    check_card
+  end
+
+  private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def set_card
+    @card = current_user.card
+  end
+
+  def set_payjp_api
+    Payjp.api_key =  Rails.application.credentials.payjp[:payjp_private_key]
+  end
+
+  def check_card
     if @card.present?
       customer    = Payjp::Customer.retrieve(@card.payjp_id)
       @card_info  = customer.cards.retrieve(customer.default_card)
@@ -63,22 +74,4 @@ class CardsController < ApplicationController
     end
   end
 
-  private
-
-  def set_item
-    @item = Item.find(params[:id])
-  end
-
-  def set_category_brand
-    @parents = Category.where(ancestry: nil)
-    @brands = ["シャネル","ナイキ", "ルイヴィトン", "シュプリーム","アディダス"]
-  end
-
-  def set_card
-    @card = Card.find_by(user_id: current_user.id)
-  end
-
-  def set_payjp_api
-    Payjp.api_key =  Rails.application.credentials.payjp[:payjp_private_key]
-  end
 end

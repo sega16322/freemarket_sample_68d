@@ -1,0 +1,16 @@
+.sell-form-wrapper
+  = render 'shared/form-header'
+  .sell-notification.form-container
+    %h3.sell-notification__title 出品が完了しました
+    %span<> 出品した商品は「
+    = link_to '出品した商品', '#', class: 'sell-notification__link'
+    %span<> 」からいつでも見ることができます
+    .item-btn-area
+      .item-btn-area__container
+        .item-btn-area__container__box
+          = link_to '続けて出品する', new_item_path, class: 'item-btn item-btn-link'
+      .item-btn-area__container
+        .item-btn-area__container__box
+          = link_to '出品した商品を見る', item_path(@item), class: 'item-btn item-btn-link'
+    = link_to 'マイページを見る', user_path(current_user), class: 'sell-notification__link'
+  = render 'shared/form-footer'

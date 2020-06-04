@@ -4,7 +4,9 @@
   background-color: $whitesmoke;
   padding: 60px 10%;
   .contents-mypage {
-    
+    h4{
+      font-weight: bold;
+    }
     &-link {
       display: inline-block;
       background-color: white;
@@ -52,12 +54,9 @@
       }
       &-nav {
         display: flex;
-        
         p {
           padding: 5px 10px;
-          
         }
-
         &-link {
           margin: 10px;
           
@@ -66,8 +65,6 @@
     }
     .mypage-tab-container-notification-todo {
       width: 100%;
-      
-      
       .mypage-tabs {
         display: flex;
         width: 100%;

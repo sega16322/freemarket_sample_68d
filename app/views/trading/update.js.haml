@@ -1,0 +1,3 @@
+$("#trading__box").html("#{escape_javascript(render partial: 'trading_status', locals: { item: @item, saler_user: @saler_user, buyer_user: @buyer_user})}")
+$("#message__form").html("#{escape_javascript(render partial: 'form', locals: { item: @item, message: @message})}")
+$(".menu__sales").html("#{escape_javascript(render partial: 'shared/header-price_point')}")

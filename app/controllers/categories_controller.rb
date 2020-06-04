@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  
+  before_action :set_item_search_query
   before_action :set_category_brand
   before_action :find_category, except: [:index]
   skip_before_action :authenticate_user!
@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
       grandchildren_id = @category.indirect_ids.sort
       find_category_item(grandchildren_id)
     elsif @category.ancestry.include?("/")
-      category_item = Item.includes(:images).where(category_id: params[:id])
+      category_item = Item.including.category(params[:id]).trading_not
       category_present(category_item)
     else
       grandchildren_id = @category.child_ids
@@ -27,11 +27,6 @@ class CategoriesController < ApplicationController
   def find_category
     @category = Category.find(params[:id])
   end
-
-  def set_category_brand
-    @parents = Category.where(ancestry: nil)
-    @brands = ["シャネル","ナイキ", "ルイヴィトン", "シュプリーム","アディダス"]
-  end
   
   def category_present(category_item)
     @items += category_item if category_item.present?
@@ -39,7 +34,7 @@ class CategoriesController < ApplicationController
 
   def find_category_item(grandchildren_id)
     category_item = []
-    category_item = Item.includes(:images).where(category_id: grandchildren_id[0].. grandchildren_id[-1]).where.not(trading_status_id: 4)
+    category_item = Item.including.category(grandchildren_id[0].. grandchildren_id[-1]).trading_not
     category_present(category_item)
   end
 end

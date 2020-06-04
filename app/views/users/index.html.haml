@@ -1,0 +1,31 @@
+.wrapper 
+  = render "shared/header"
+  .show-contents
+    = render "shared/show-contents"
+    .content
+      .likes__title
+        本人情報確認
+      .content__user__information
+        .content__user__information__field
+          .content__user__information__field__title
+            ニックネーム
+          .content__user__information__field__body
+            = current_user.nickname
+        .content__user__information__field
+          .content__user__information__field__title
+            お名前
+          .content__user__information__field__body
+            = fullname(current_user)
+        .content__user__information__field
+          .content__user__information__field__title
+            お名前(カナ)
+          .content__user__information__field__body
+            = fullname_kana(current_user)
+        .content__user__information__field
+          .content__user__information__field__title
+            生年月日
+          .content__user__information__field__body
+            = current_user.birthday.strftime("%Y年 %m月 %d日")
+  = render "shared/footer-image"
+  = render "shared/footer"
+  = render "shared/saler-btn"
