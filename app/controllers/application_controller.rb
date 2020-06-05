@@ -44,4 +44,9 @@ class ApplicationController < ActionController::Base
   def set_trading_item
     @item = Item.find(params[:item_id])
   end
+
+  def set_notice
+    @user = current_user
+    @notifications = @user.passive_notifications
+  end
 end
