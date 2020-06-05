@@ -20,41 +20,40 @@ class NotificationsController < ApplicationController
       @notifications = current_user.passive_notifications.destroy_all
       redirect_to users_notifications_path
   end
+  private
 
+  def set_category_brand
+    @parents = Category.where(ancestry: nil)
+    @brands = ["シャネル","ナイキ", "ルイヴィトン", "シュプリーム","アディダス"]
+  end
 
-#   private
+  def set_item
+    @item = Item.find_by_id(params[:id])
+  end
 
-#   def set_category_brand
-#     @parents = Category.where(ancestry: nil)
-#     @brands = ["シャネル","ナイキ", "ルイヴィトン", "シュプリーム","アディダス"]
-#   end
+  def item_params
+    params.require(:item).permit(
+      :name, 
+      :explanation,
+      :category_id,
+      :status_id,
+      :delivery_charge_flag,
+      :delivery_method_id,
+      :prefecture_id,
+      :delivery_date_id,
+      :price, 
+      :trading_status_id,
+      images_attributes: [
+        :id,
+        :image,
+        :_destroy
+      ]
+    ).merge(saler_id: current_user.id)
+  end
 
-#   def set_item
-#     @item = Item.find_by_id(params[:id])
-#   end
-
-#   def item_params
-#     params.require(:item).permit(
-#       :name, 
-#       :explanation,
-#       :category_id,
-#       :status_id,
-#       :delivery_charge_flag,
-#       :delivery_method_id,
-#       :prefecture_id,
-#       :delivery_date_id,
-#       :price, 
-#       :trading_status_id,
-#       images_attributes: [
-#         :id,
-#         :image,
-#         :_destroy
-#       ]
-#     ).merge(saler_id: current_user.id)
-#   end
-# end
 
   def set_notice
     @user = current_user
     @notifications = @user.passive_notifications
   end
+end
